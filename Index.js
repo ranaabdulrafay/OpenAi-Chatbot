@@ -5,14 +5,12 @@ const app = express();
 const client = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
   });
-const PORT = 3000;
-
 
 // Let Express read JSON request bodies
 app.use(express.json());
 
 app.get('/', (req, res) => {
-    res.send('Server is running!');
+    res.send('OpenAI chatBot service by abdul rafay rana is running!');
   });
 
 app.get('/check', (req, res) => {
@@ -22,16 +20,15 @@ app.get('/check', (req, res) => {
 
 app.post('/ask', async (req, res) => {
   const received = req.body;
-  console.log(`you asked ${received.input}`);
   const response = await client.responses.create({
     model: "gpt-4o-mini",
     input: received.input
     });
 
-  res.json({ message: 'Data received!', responseData: response.output_text });
+  res.json({ responseData: response.output_text });
 });
 
 // Start the server
 app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+  console.log(`Server running...`);
 });
