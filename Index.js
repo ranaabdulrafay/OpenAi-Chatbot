@@ -1,6 +1,6 @@
 import OpenAI from "openai";
 import express from "express";
-
+const PORT = 3000;
 const app = express();
 const client = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
@@ -49,7 +49,6 @@ app.post('/ask', async (req, res) => {
   res.json({ message: 'Data received!', responseData: response.output[0]?.content[0]?.text || "…" });
 });
 
-// Start the server
-app.listen(() => {
+app.listen(POST,() => {
   console.log(`Server running...`);
 });
