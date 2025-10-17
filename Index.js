@@ -49,6 +49,6 @@ app.post('/ask', async (req, res) => {
   res.json({ message: 'Data received!', responseData: response.output[0]?.content[0]?.text || "…" });
 });
 
-app.listen(POST,() => {
+app.listen(PORT,() => {
   console.log(`Server running...`);
 });
